@@ -4,6 +4,7 @@ body{
   align-items: center;
   min-height:100vh;
   background: #fc1e8a;
+  user-select: none;//impede que o usuario selecione elementos na pagina 
 
   .container{
     position: relative;
@@ -62,8 +63,60 @@ body{
           display: flex;
           align-items: center;
           justify-content: center;
-          background-color:#fff;
+          background-color: #fff;
+        
+          font-size: 3em;
+          transform: rotateY(180deg);
+          transition: 0.25s;
+
+          &::after{
+            content: "";
+            position: absolute;
+            inset: 0;//seta o pponto 0 do elemento 
+            background: #404040;
+            transition: 0.25s;
+            transform: rotateY(0deg);
+            backface-visibility: hidden;//esconde o carde, não so sobrepoem 
+          }
+          &.boxOpen{
+            transform: rotateY(0deg);
+            &::after{
+              transform: rotateY(180deg);
+            }
+          }
+
+          &.boxMatch{
+            &::after{
+              transform: rotateY(180deg);
+            }
+          }
         }
      }
   }
+
+}
+
+@media  (max-width:596px){
+  body{
+    .container{
+      padding: initial;
+      h2{
+       font-size:1.5em;
+      }
+      .reset{
+        width: 90%;
+       }
+      .game{
+        width: 90%;
+        justify-content: center;
+        align-items: center;
+        .item{
+          width: 20%;
+          height: 15%;
+          font-size: 2em;
+        }
+      }
+   }
+  }
+
 }

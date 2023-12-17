@@ -4,6 +4,9 @@ body {
   align-items: center;
   min-height: 100vh;
   background: #fc1e8a;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 body .container {
   position: relative;
@@ -54,4 +57,47 @@ body .container .game .item {
   align-items: center;
   justify-content: center;
   background-color: #fff;
+  font-size: 3em;
+  transform: rotateY(180deg);
+  transition: 0.25s;
+}
+body .container .game .item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #404040;
+  transition: 0.25s;
+  transform: rotateY(0deg);
+  backface-visibility: hidden;
+}
+body .container .game .item.boxOpen {
+  transform: rotateY(0deg);
+}
+body .container .game .item.boxOpen::after {
+  transform: rotateY(180deg);
+}
+body .container .game .item.boxMatch::after {
+  transform: rotateY(180deg);
+}
+
+@media (max-width: 596px) {
+  body .container {
+    padding: initial;
+  }
+  body .container h2 {
+    font-size: 1.5em;
+  }
+  body .container .reset {
+    width: 90%;
+  }
+  body .container .game {
+    width: 90%;
+    justify-content: center;
+    align-items: center;
+  }
+  body .container .game .item {
+    width: 20%;
+    height: 15%;
+    font-size: 2em;
+  }
 }/*# sourceMappingURL=main.css.map */
